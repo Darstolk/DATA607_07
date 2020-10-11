@@ -1,0 +1,87 @@
+---
+title: "Assignment – Working with XML and JSON in R"
+author: "Dariusz Siergiejuk"
+date: "10/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(abind)
+library(gtable)
+library(markdown)
+library(prettyunits)
+library(promises)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+library(RCurl)
+library(tidyverse)
+```
+
+```{r}
+library(XML)
+library(knitr)
+library(rjson)
+library(plyr)
+```
+
+#**JSON**
+
+```{r}
+library(jsonlite)
+```
+
+```{r}
+books_json <- fromJSON("https://raw.githubusercontent.com/Darstolk/DATA607_07/main/books_jason")
+```
+
+```{r}
+books_json <- bind_rows(books_json, .id = 'Author')
+books_json
+```
+
+#**HTML**
+
+```{r}
+dasbuch_html <- readHTMLTable(
+    getURL("https://raw.githubusercontent.com/Darstolk/DATA607_07/main/dasbuch.html"), header = TRUE, which = 1)
+
+class(dasbuch_html)
+```
+
+```{r}
+knitr::kable(dasbuch_html)
+```
+
+#**XML**
+
+```{r}
+dasbuch_zwei <- ldply(xmlToList(getURL("https://raw.githubusercontent.com/Darstolk/DATA607_07/main/dasbuch_xml.xml")), data.frame) %>%
+    select(-.id)
+
+class(dasbuch_zwei)
+```
+
+```{r}
+knitr::kable(dasbuch_zwei)
+```
+
+#**Conclusion**
+
+The way the data is being stored from file format to file format is a bit different. It took me a while to learn the differences and finally realize that HTML format is not so much different from XML format. No clue as to why this is so. The subject matter of data is so vast and incomprehensible in this instance; therefore you need to possess many years of experience only to find your bearing on most basic techniques and processes of analyzing data in meaningful and useful way, so it can be used down the road for building more complex and useful things. JASON file format is yet another addition to this entire technology stack. I had to spend a good share of time to find out how to build this type of file. My attempts to squeeze more information in addition to title, author, and ISBN number did not bear any fruits. I gave up after having tried for a prolonged stretch of time. All I can say at the end that these files are not a joke to work with. One needs some serious technical knowledge right here backed up by quite serious high level education. The books I used as mere titles for this exercise I read as reference, still it takes a long to digest the content.
+
+
+```{r}
+dasbuch_html == dasbuch_zwei
+```
+
+
+This is the end of this file.
