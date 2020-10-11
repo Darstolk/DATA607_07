@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <id>1</id>
+        <title>Data Wrangling with R</title>
+       <author>Bradley C. Boehmke</author>
+        <isbn>3319455982</isbn>
+    </book>
+    <book>
+        <id>2</id>
+        <title>Learning Web Design</title>
+        <author>Jennifer Robbins</author>
+        <isbn>1491960205</isbn>
+    </book>
+    <book>
+         <id>3</id>
+         <title>Programming Skills for Data Science</title>
+        <author>Michael Freeman</author>
+        <isbn>0135133106</isbn>
+    </book>
+</books>
