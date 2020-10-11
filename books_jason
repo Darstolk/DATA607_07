@@ -1,0 +1,7 @@
+{
+    "ID": [1,2,3],
+    "Title": ["Data Wrangling with R", 
+              "Learning Web Design","Programming Skills for Data Science"],
+    "Author": ["Bradley C. Boehmke","Jennifer Robbins", "Michael Freeman"],
+    "ISBN": ["0135133106","3319455982","1491960205"]
+}
